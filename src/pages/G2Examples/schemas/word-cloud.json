@@ -1,0 +1,306 @@
+{
+    "type": "object",
+    "properties": {
+        "width": {
+            "title": "width",
+            "default": "400",
+            "required": false,
+            "type": "number",
+            "description": "设置图表宽度。"
+        },
+        "height": {
+            "title": "height",
+            "default": "400",
+            "required": false,
+            "type": "number",
+            "description": "设置图表高度。"
+        },
+        "autoFit": {
+            "title": "autoFit",
+            "default": "true",
+            "required": false,
+            "type": "boolean",
+            "description": "图表是否自适应容器宽高。当 "
+        },
+        "padding": {
+            "title": "padding",
+            "default": null,
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "画布的 "
+        },
+        "appendPadding": {
+            "title": "appendPadding",
+            "default": null,
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "额外增加的 "
+        },
+        "renderer": {
+            "title": "renderer",
+            "default": "canvas",
+            "required": false,
+            "type": "string",
+            "description": "设置图表渲染方式为 "
+        },
+        "pixelRatio": {
+            "title": "pixelRatio",
+            "default": "window.devicePixelRatio",
+            "required": false,
+            "type": "number",
+            "description": "设置图表渲染的像素比，和底层的 devicePixelRatio 含义一致，一般不用设置，除非在页面有整体 scale 的情况下，可以自定义。"
+        },
+        "limitInPlot": {
+            "title": "limitInPlot",
+            "default": null,
+            "required": false,
+            "type": "boolean",
+            "description": "是否对超出坐标系范围的 Geometry 进行剪切。"
+        },
+        "supportCSSTransform": {
+            "title": "supportCSSTransform",
+            "default": null,
+            "required": false,
+            "type": "boolean",
+            "description": "支持 CSS transform，开启后图表的交互以及事件将在页面设置了 css transform 属性时生效，默认关闭。"
+        },
+        "locale": {
+            "title": "locale",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "指定具体语言，目前内置 'zh-CN' and 'en-US' 两个语言，你也可以使用 "
+        },
+        "data": {
+            "title": "data",
+            "default": null,
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "description": "设置图表数据源。数据源为对象集合，例如："
+        },
+        "wordField": {
+            "title": "wordField",
+            "default": null,
+            "required": true,
+            "type": "string",
+            "description": "单词内容在数据中所对应的字段名。"
+        },
+        "weightField": {
+            "title": "weightField",
+            "default": null,
+            "required": true,
+            "type": "string",
+            "description": "单词所占权重在数据中所对应的字段名。"
+        },
+        "colorField": {
+            "title": "colorField",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "根据该字段进行颜色映射。"
+        },
+        "random": {
+            "title": "random",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "enum": [
+                "function",
+                "number"
+            ],
+            "description": "自定义所使用的随机函数，其值可以是一个 [0, 1) 区间中的值，也可以是一个返回该值的函数，当该值是一个固定的值时，每次渲染相同数据的词云图时，其对应的每个单词的布局坐标一致。"
+        },
+        "spiral": {
+            "title": "spiral",
+            "default": "'archimedean'",
+            "required": false,
+            "type": "string",
+            "enum": [
+                "archimedean",
+                "rectangular"
+            ],
+            "description": "当设置为 "
+        },
+        "placementStrategy": {
+            "title": "placementStrategy",
+            "default": null,
+            "required": false,
+            "type": "function",
+            "description": "自定义每个词语的坐标，返回值必须包含 x 和 y 属性，其余的可选。也可以在 "
+        },
+        "timeInterval": {
+            "title": "timeInterval",
+            "default": "2000",
+            "required": false,
+            "type": "number",
+            "description": "设置绘制程序最大的执行时间，单位毫秒，如果时间设置过短可能会只绘制一部分词语。"
+        },
+        "meta": {
+            "title": "meta",
+            "default": null,
+            "required": false,
+            "type": "object",
+            "description": "全局化配置图表数据元信息，以字段为单位进行配置，来定义数据的类型和展示方式。在 meta 上的配置将同时影响所有组件的文本信息。"
+        },
+        "imageMask": {
+            "title": "imageMask",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "enum": [
+                "HTMLImageElement",
+                "string"
+            ],
+            "description": "设置一张图片，然后图表就可以根据该图片的形状进行渲染，可以是图片元素实例或者 url 地址和 base64。"
+        },
+        "wordStyle": {
+            "title": "wordStyle",
+            "default": null,
+            "required": false,
+            "type": "object",
+            "description": "设置每个词语的样式。"
+        },
+        "color": {
+            "title": "color",
+            "default": null,
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "指定点的颜色。如没有配置 colorField，指定一个单值即可。对 colorFiled 进行了配置的情况下，即可以指定一系列色值，也可以通过回调函数的方法根据对应数值进行设置。"
+        },
+        "axis": {
+            "title": "axis",
+            "default": "false",
+            "required": false,
+            "type": "boolean",
+            "description": "xAxis、yAxis 配置相同。"
+        },
+        "legend": {
+            "title": "legend",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "配置图例有两种方式\n第一种，传入 "
+        },
+        "label": {
+            "title": "label",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": " 类型定义如下：（关于 "
+        },
+        "tooltip": {
+            "title": "tooltip",
+            "default": null,
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "指定 tooltip 中显示的字段，默认不同图表有不同的默认字段列表。配合 "
+        },
+        "annotations": {
+            "title": "annotations",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "详细配置见：各 Annotation 配置项说明。"
+        },
+        "slider": {
+            "title": "slider",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": " 类型如下："
+        },
+        "render()": {
+            "title": "render()",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "渲染图表。"
+        },
+        "update()": {
+            "title": "update()",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "更新图表配置项，配置覆盖，不会做差异比对。"
+        },
+        "内置主题": {
+            "title": "内置主题",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "目前默认的内置主要有两套："
+        },
+        "主题属性": {
+            "title": "主题属性",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "除了使用内置的 "
+        },
+        "主题属性（主题样式表）": {
+            "title": "主题属性（主题样式表）",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "除了以上介绍的主题属性之外，还可以传入主题样式表来自定义主题。如果你需要对全局主题进行配置的话，对样式风格进行切换，比如更改颜色、字体大小、边框粗细等"
+        },
+        "更新主题": {
+            "title": "更新主题",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "使用方式："
+        },
+        "自定义注册主题": {
+            "title": "自定义注册主题",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "另外，还可以通过 G2 提供了自定义主题机制来定义全新的主题结构，以允许用户切换、定义图表主题。前往 "
+        },
+        "添加交互": {
+            "title": "添加交互",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "通过 "
+        },
+        "配置交互": {
+            "title": "配置交互",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "通过 "
+        },
+        "移除交互": {
+            "title": "移除交互",
+            "default": null,
+            "required": false,
+            "type": "string",
+            "description": "使用示例："
+        }
+    },
+    "required": [
+        "data",
+        "wordField",
+        "weightField"
+    ],
+    "title": "词云图",
+    "name": "word-cloud",
+    "humpTitle": "wordCloud"
+}
